@@ -16,6 +16,18 @@ body {
     background-color: #dfc7b8;
 }
 
+/* Estilo global de botões (igual ao botão central da hero) */
+.btn {
+    background-color: #c8a876;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
@@ -48,6 +60,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 header .logo {
@@ -81,12 +94,32 @@ header ul li a:hover {
     color: #000;
 }
 
+/* Banner com botão sobreposto */
+.site-banner {
+    position: relative;
+}
+
+#banner-img {
+    width: 100%;
+    display: block;
+}
+
+.banner-buy {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 64%; /* aproximação: mais central entre “My.Story” e “Moda feminina” */
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .banner-buy { top: 66%; }
+}
+
 /* Hero Section */
 .hero {
-    /* Fundo apenas na área da escrita (seção hero) */
-    background: linear-gradient(rgba(223, 199, 184, 0.3), rgba(223, 199, 184, 0.3)), url('assets/images/Gemini_Generated_Image_7xnlmo7xnlmo7xnl.png');
-    background-size: cover;
-    background-position: center;
+    /* Removido o background com imagem para manter cor uniforme */
+    background-color: #dfc7b8;
     min-height: 0; /* não força altura extra */
     padding: 5rem 0 5rem; /* mesmo espaço em cima e embaixo, maior */
 }
@@ -106,6 +139,7 @@ header ul li a:hover {
     font-size: 3.6rem;
     margin-top: 0; /* remove espaço extra acima do título */
     margin-bottom: 1rem;
+    font-family: 'Georama', sans-serif;
 }
 
 /* Ajustes responsivos para telas pequenas */
@@ -121,16 +155,11 @@ header ul li a:hover {
 .hero-content p {
     font-size: 1.5rem; /* aumenta para melhor destaque e leitura */
     margin-bottom: 2rem;
+    font-family: 'Georama', sans-serif;
 }
 
 .hero-content .btn {
-    background-color: #c8a876;
-    color: #fff;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 1.1rem; /* botão acompanha incremento de fonte */
+    /* Usa o estilo global .btn para manter consistência */
 }
 
 .hero-content .site-link {
@@ -209,6 +238,12 @@ header ul li a:hover {
 /* Contêiner visual para os looks, dá respiro nas bordas */
 .looks-container {
     padding: 8px;
+}
+
+/* CTA abaixo da galeria */
+.gallery-cta {
+    margin-top: 2rem;
+    text-align: center;
 }
 
 .album-item {
