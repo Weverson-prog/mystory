@@ -68,6 +68,7 @@ header .logo {
     font-weight: bold;
     color: #333;
     text-decoration: none;
+    font-family: 'Georama', sans-serif;
 }
 
 header ul {
@@ -140,6 +141,24 @@ header ul li a:hover {
     margin-top: 0; /* remove espaço extra acima do título */
     margin-bottom: 1rem;
     font-family: 'Georama', sans-serif;
+}
+
+/* Título menor acima da frase principal */
+.hero-content .title-small {
+    font-size: 0.8em; /* um pouco menor que o h1 */
+    line-height: 1.1;
+    font-weight: 400; /* sem negrito */
+    display: inline-block;
+    font-family: 'Georama', sans-serif; /* força Georama na primeira linha */
+}
+
+/* Segunda linha menor */
+.hero-content .subtitle-small {
+    font-size: 0.85em; /* também menor que o h1 */
+    line-height: 1.15;
+    font-weight: 400; /* igual ao My.Story, sem negrito */
+    display: inline-block;
+    font-family: 'Georama', sans-serif; /* força Georama na segunda linha */
 }
 
 /* Ajustes responsivos para telas pequenas */
