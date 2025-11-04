@@ -21,7 +21,10 @@
 
     <main>
         <section class="site-banner" id="site-banner">
-            <img id="banner-img" alt="Banner" />
+            <picture>
+                <source media="(max-width: 768px)" srcset="assets/images/banner_mobile.png">
+                <img id="banner-img" src="assets/images/banner2.png" alt="Banner">
+            </picture>
             <a href="https://vesti.co/demissy2/catalogo/c869050daeb2d17" class="btn banner-buy" target="_blank" rel="noopener noreferrer">Compre Agora</a>
         </section>
         <section class="hero" id="hero">
@@ -52,16 +55,22 @@
 
     <footer id="contact">
         <div class="container">
-            <div class="social-icons">
-                <a href="https://wa.me/5511963936926" target="_blank" rel="noopener noreferrer"><img src="assets/images/icons/icons8-whatsapp.gif" alt="WhatsApp"></a>
-                <a href="https://www.instagram.com/mystoryoficial" target="_blank"><img src="assets/images/icons/icons8-instagram-logo.gif" alt="Instagram"></a>
-            </div>
             <p>Produto Et Forma Modas</p>
             <p>CNPJ: 24.972.539/0001-70</p>
             <p>Rua José Paulino, 256 -  São Paulo - SP, 01122-000 </p>
             <p>&copy; 2025 My Story. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Ícones flutuantes fixos (WhatsApp e Instagram) -->
+    <div class="floating-social" aria-label="Contatos rápidos">
+        <a href="https://wa.me/5511963936926" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/icons/icons8-whatsapp.svg" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/mystoryoficial" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/icons/icons8-instagram-logo.svg" alt="Instagram">
+        </a>
+    </div>
 
     <script src="script.js"></script>
     <div id="myModal" class="modal">

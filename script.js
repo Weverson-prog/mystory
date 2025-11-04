@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "kit 26": ["IMG_7136.JPG", "IMG_7139.JPG", "IMG_7141.JPG", "IMG_7143.JPG", "IMG_7145.JPG", "IMG_7152.JPG", "IMG_7155.JPG", "roupa (28).jpg"]
     };
 
-    // Configuração do banner (pode ser Drive ID, link do Drive ou caminho local)
-    // OBS: substitua abaixo por o ID/link direto da imagem na pasta 'banner' do Drive
-    const BANNER_IMAGE = 'assets/images/banner.png';
+    // Configuração do banner para desktop e mobile
+    const BANNER_DESKTOP = 'assets/images/banner.png';
+    const BANNER_MOBILE = 'assets/images/banner_mobile.png';
     // (remoção do bloco anterior: o carregamento do banner está mais abaixo, integrado ao fluxo)
 
     // Extrai ID do Google Drive de vários formatos
@@ -89,15 +89,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return `assets/images/looks/${kitName}/${item}`;
     }
 
-    // Carrega o banner com fallback (original PNG -> thumbnail alta resolução -> local)
+    // Carrega o banner com fallback e respeita <picture> responsivo no HTML
     const bannerImgEl = document.getElementById('banner-img');
+    const hasPictureSource = !!document.querySelector('.site-banner picture source');
     if (bannerImgEl) {
-        // Carregamento direto de arquivo local
-        bannerImgEl.src = BANNER_IMAGE;
         bannerImgEl.onerror = () => {
             console.warn('Banner local não carregou — aplicando fallback.');
             bannerImgEl.src = 'assets/images/looks/kit 1/Cópia de IMG_0014.jpg';
         };
+    }
+    // Se não houver <picture>, faz o swap via JS
+    if (bannerImgEl && !hasPictureSource) {
+        const setBannerSrc = () => {
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            bannerImgEl.src = isMobile ? BANNER_MOBILE : BANNER_DESKTOP;
+        };
+        setBannerSrc();
+        window.addEventListener('resize', setBannerSrc);
     }
 
     // Ajusta dinamicamente a altura da navbar como variável CSS

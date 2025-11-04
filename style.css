@@ -108,12 +108,12 @@ header ul li a:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 64%; /* aproximação: mais central entre “My.Story” e “Moda feminina” */
+    top: 82%; /* desce mais o botão no desktop */
     z-index: 5;
 }
 
 @media (max-width: 768px) {
-    .banner-buy { top: 66%; }
+    .banner-buy { top: 86%; }
 }
 
 /* Hero Section */
@@ -390,10 +390,106 @@ footer p {
     background-color: #dfc7b8; /* fundo igual ao site para áreas vazias */
 }
 
+/* Mobile: reduzir levemente a altura para diminuir o “zoom” percebido */
+@media (max-width: 768px) {
+    .site-banner { height: calc(96vh - var(--navbar-height)); }
+}
+
 .site-banner img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover; /* preenche sem distorcer e com menos faixas */
-    object-position: center; /* centraliza a área mais importante */
+    object-position: center 18%; /* mostra mais da parte superior no desktop */
+}
+
+/* Ícones flutuantes fixos no canto inferior direito */
+.floating-social {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 950; /* abaixo do modal (1000) */
+}
+
+.floating-social a {
+    width: 88px;
+    height: 88px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent; /* fundo transparente conforme solicitado */
+    box-shadow: none;
+    transition: transform 0.2s ease;
+}
+
+.floating-social a:hover {
+    transform: translateY(-2px);
+}
+
+.floating-social img {
+    width: 48px;
+    height: 48px;
+}
+
+@media (max-width: 480px) {
+    .floating-social a { width: 72px; height: 72px; }
+    .floating-social img { width: 40px; height: 40px; }
+    .floating-social { bottom: 14px; right: 14px; }
+}
+
+/* Mobile: preencher a tela inteira como no desktop */
+@media (max-width: 768px) {
+    .site-banner img,
+    .site-banner picture img {
+        object-fit: cover; /* ocupa toda a área do banner */
+        object-position: 42% 33%; /* move o foco à esquerda para não cortar o "M" */
+        height: 100%; /* mantém a altura completa do banner */
+    }
+}
+
+/* ------------------ Ajustes responsivos gerais (mobile) ------------------ */
+/* Evita estouro de mídia em telas pequenas */
+img, video { max-width: 100%; height: auto; }
+
+/* Container mais fluido em telas pequenas */
+@media (max-width: 768px) {
+    .container { width: 92%; }
+}
+
+/* Navbar responsiva: quebra em linhas e centraliza itens */
+@media (max-width: 768px) {
+    header .container { flex-wrap: wrap; gap: 0.5rem 1rem; }
+    header ul { flex-wrap: wrap; justify-content: center; }
+    header ul li { margin: 0.5rem 0.75rem; }
+}
+
+/* Assegura que <picture> ocupe a área completa do banner */
+.site-banner picture { display: block; width: 100%; height: 100%; }
+.site-banner picture img { width: 100%; height: 100%; display: block; }
+
+/* Espaçamento da hero reduzido em telas pequenas */
+@media (max-width: 768px) {
+    .hero { padding: 3rem 0 3rem; }
+}
+
+/* Grid da galeria adapta para colunas adequadas no mobile */
+@media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 360px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* Modal mais amplo no mobile */
+@media (max-width: 480px) {
+    .modal-content { width: 95%; max-width: 95%; }
+}
+
+/* Ícones um pouco menores no mobile */
+@media (max-width: 480px) {
+    .social-icons img { width: 28px; height: 28px; }
 }
