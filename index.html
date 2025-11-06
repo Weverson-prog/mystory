@@ -6,6 +6,7 @@
     <title>My Story</title>
     <link href="https://fonts.googleapis.com/css2?family=Georama:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -16,15 +17,25 @@
                     <li><a href="#gallery">Catálogo</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
+                <!-- Botão hambúrguer (três barrinhas empilhadas) -->
+                <button class="mobile-menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
         </nav>
     </header>
 
     <main>
         <section class="site-banner" id="site-banner">
             <picture>
-                <source media="(max-width: 768px)" srcset="assets/images/banner_mobile.png">
+                <source media="(max-width: 768px)" srcset="assets/images/bannerM.JPG">
                 <img id="banner-img" src="assets/images/banner2.png" alt="Banner">
             </picture>
+            <div class="banner-mobile-title" aria-hidden="true">
+                <span class="title-primary">My.Story</span>
+                <span class="title-sub">Moda feminina</span>
+            </div>
             <a href="https://vesti.co/demissy2/catalogo/c869050daeb2d17" class="btn banner-buy" target="_blank" rel="noopener noreferrer">Compre Agora</a>
         </section>
         <section class="hero" id="hero">

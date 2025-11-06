@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configuração do banner para desktop e mobile
     const BANNER_DESKTOP = 'assets/images/banner.png';
-    const BANNER_MOBILE = 'assets/images/banner_mobile.png';
+    const BANNER_MOBILE = 'assets/images/bannerM.JPG';
     // (remoção do bloco anterior: o carregamento do banner está mais abaixo, integrado ao fluxo)
 
     // Extrai ID do Google Drive de vários formatos
@@ -110,6 +110,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajusta dinamicamente a altura da navbar como variável CSS
     const headerEl = document.querySelector('header');
+    // Toggle do menu mobile (três pontinhos no canto direito)
+    const mobileToggleBtn = document.querySelector('.mobile-menu-toggle');
+    if (mobileToggleBtn && headerEl) {
+        const updateToggleAria = () => {
+            const expanded = headerEl.classList.contains('menu-open');
+            mobileToggleBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        };
+        mobileToggleBtn.addEventListener('click', () => {
+            headerEl.classList.toggle('menu-open');
+            updateToggleAria();
+        });
+        // Fecha ao clicar fora
+        document.addEventListener('click', (e) => {
+            const isInsideHeader = headerEl.contains(e.target) || mobileToggleBtn.contains(e.target);
+            if (!isInsideHeader && headerEl.classList.contains('menu-open')) {
+                headerEl.classList.remove('menu-open');
+                updateToggleAria();
+            }
+        });
+        // Fecha ao sair do breakpoint mobile
+        window.addEventListener('resize', () => {
+            if (!window.matchMedia('(max-width: 768px)').matches) {
+                headerEl.classList.remove('menu-open');
+                updateToggleAria();
+            }
+        });
+        // Fecha com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                headerEl.classList.remove('menu-open');
+                updateToggleAria();
+            }
+        });
+    }
     function updateNavbarHeightVar() {
         const h = headerEl ? headerEl.offsetHeight : 0;
         document.documentElement.style.setProperty('--navbar-height', `${h}px`);
